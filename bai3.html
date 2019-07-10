@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Remote(code) {
+        this.code = code;
+        this.getCode = function () {
+            return this.code;
+        };
+        this.setCode = function (code) {
+            this.code = code;
+        };
+
+        this.moveChannel = function (tivi, number) {
+            tivi.moveChannel(number);
+        };
+        this.volume = function (tivi, volume) {
+            tivi.volume(volume);
+        };
+        this.turnOff = function (tivi) {
+            tivi.status = !tivi.status;
+        }
+    };
+
+    function Tivi(isPlaying, volume, status) {
+        this.isPlaying = isPlaying;
+        this.volume = volume;
+        this.status = status;
+
+        this.getIsPlaying = function () {
+            return this.isPlaying;
+        };
+        this.setIsPlaying = function (isPlaying) {
+            this.isPlaying = isPlaying;
+        };
+        this.getVolume = function () {
+            return this.volume;
+        };
+        this.setVolume = function (volume) {
+            this.volume = volume;
+        };
+        this.getStatus = function () {
+            return this.status;
+        };
+        this.setStatus = function () {
+            this.status = status;
+        };
+        
+
+        this.moveChannel = function (number) {
+            this.isPlaying = number;
+        };
+        this.upVolume = function (number) {
+            this.volume += number;
+        }
+    };
+
+    let tivi1 = new Tivi(3,20,true);
+    let remote1 = new Remote(0);
+    
+    if (tivi1.getStatus()) {
+        document.write("Tivi da bat"+"<br>");
+    }
+    tivi1.moveChannel(7);
+    document.write("Tivi dang o kenh :" + tivi1.getIsPlaying() + " Volume = " + tivi1.getVolume() + "<br>");
+    remote1.moveChannel(tivi1,3);
+    document.write("Tivi dang o kenh :" + tivi1.getIsPlaying() + "<br>");
+    tivi1.upVolume(2);
+    document.write("Tivi dang o kenh :" + tivi1.getIsPlaying() + " Volume = " + tivi1.getVolume()+"<br>");
+    remote1.turnOff(tivi1);
+    document.write("Tivi da tat");
+
+</script>
+</body>
+</html>

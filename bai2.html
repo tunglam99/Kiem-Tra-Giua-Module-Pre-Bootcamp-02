@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Rat(name, weight, speed, status) {
+        this.name = name;
+        this.weight = weight;
+        this.speed = speed;
+        this.status = status;
+        
+        this.getName = function () {
+            return this.name;
+        };
+        this.setName = function (name) {
+            this.name = name;
+        };
+        this.getWeight = function () {
+            return this.weight;
+        };
+        this.setWeight = function (weight) {
+            this.weight = weight;
+        };
+        this.getSpeed = function () {
+            return this.speed;
+        };
+        this.setSpeed = function (speed) {
+            this.speed = speed;
+        };
+        this.getStatus = function () {
+            return this.status;
+        };
+        this.setStatus = function (status) {
+            this.status = status;
+        };
+        this.soundingRat = function () {
+            alert("Micky: chit chit");
+        };
+    };
+
+    function Cat(name, weight, maxSpeed) {
+        this.name = name;
+        this.weight = weight;
+        this.maxSpeed = maxSpeed;
+
+        this.getName = function () {
+            return this.name;
+        };
+        this.setName = function (name) {
+            this.name = name;
+        };
+        this.getWeight = function () {
+            return this.weight;
+        };
+        this.setWeight = function (weight) {
+            this.weight = weight;
+        };
+        this.getMaxSpeed = function () {
+            return this.maxSpeed;
+        };
+        this.setMaxSpeed = function (maxSpeed) {
+            this.maxSpeed = maxSpeed;
+        };
+
+        this.soundingCat = function () {
+            alert("Snoop: meo meo");
+        };
+        this.catchRat = function (rat) {
+            if (rat.getSpeed() < this.maxSpeed) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+        this.eatRat = function (rat) {
+            if (rat.status) {
+                this.weight = this.weight + rat.getWeight();
+            }
+        };
+    }
+
+        let rat1 = new Rat("Micky", 5, 50, true);
+        let cat1 = new Cat("Snoop", 15, 100);
+        rat1.soundingRat();
+        cat1.soundingCat();
+        if (cat1.catchRat(rat1)) {
+            document.write(cat1.getName() + " can catch " + rat1.getName());
+            cat1.eatRat(rat1);
+        } else {
+            document.write(cat1.getName() + " Can't catch " + rat1.getName());
+        }
+        document.write("<br>"+"Weight of cat: " + cat1.getWeight());
+
+</script>
+</body>
+</html>
